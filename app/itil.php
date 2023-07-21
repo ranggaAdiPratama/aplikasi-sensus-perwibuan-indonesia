@@ -1,8 +1,8 @@
 <?php
 
-function greetings()
+function warmGreeting()
 {
-    return 'Mitsuha waifu aing';
+    return 'Kalem, anjing';
 }
 
 function includeRouteFiles($folder)
