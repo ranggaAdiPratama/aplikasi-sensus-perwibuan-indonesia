@@ -74,4 +74,15 @@ class AuthController extends Controller
             // !SECTION kalau otentifikasi gagal
         }
     }
+
+    // NOTE GET /auth/logout
+    /* -------------------------------------------------------------------------- */
+    /*                                   LOGOUT                                   */
+    /* -------------------------------------------------------------------------- */
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->to('/login');
+    }
 }

@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 function warmGreeting()
 {
-    return 'Kalem, anjing';
+    return 'Selamat datang ' . Auth::user()->name . '! Sudah minum obat skizo hari ini?';
 }
 
 function includeRouteFiles($folder)

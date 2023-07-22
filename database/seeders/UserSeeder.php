@@ -16,10 +16,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = \Faker\Factory::create();
+
         DB::table('users')->insert([
             'created_at'    => date('Y-m-d H:i:s'),
-            'email'         => 'admin@mail.com',
-            'name'          => 'Admin',
+            'email'         => $faker->unique()->safeEmail,
+            'name'          => $faker->name,
             'username'      => 'admin',
             'password'      => Hash::make('mitsuha')
         ]);
