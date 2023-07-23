@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class SinglePageController extends Controller
@@ -12,8 +13,23 @@ class SinglePageController extends Controller
     /* -------------------------------------------------------------------------- */
     public function dashboard()
     {
+        $url = "https://api.myanimelist.net/v2/anime/season/" . date('Y') . "/" . getSeason();
+
+        $client = new Client();
+
+        $response = $client->request('GET', $url, [
+            'headers'   => [
+                'X-MAL-CLIENT-ID' => env('MAL_ID')
+            ]
+        ]);
+
+        $data   = json_decode($response->getBody(), true);
+
+        $animes = $data['data'];
+
         $data = [
-            'title' => 'Dashboard'
+            'animes'    => $animes,
+            'title'     => 'Dashboard'
         ];
 
         return view('admin.dashboard', $data);

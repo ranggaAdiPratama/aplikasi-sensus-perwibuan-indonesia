@@ -2,11 +2,20 @@
 
 use Illuminate\Support\Facades\Auth;
 
-function warmGreeting()
+function getSeason()
 {
-    return 'Selamat datang ' . Auth::user()->name . '! Sudah minum obat skizo hari ini?';
-}
+    if (date('m') == '01' || date('m') == '02' || date('m') == '03') {
+        $season = 'winter';
+    } elseif (date('m') == '04' || date('m') == '05' || date('m') == '06') {
+        $season = 'spring';
+    } elseif (date('m') == '07' || date('m') == '08' || date('m') == '09') {
+        $season = 'summer';
+    } elseif (date('m') == '10' || date('m') == '11' || date('m') == '12') {
+        $season = 'fall';
+    }
 
+    return $season;
+}
 function includeRouteFiles($folder)
 {
     $directory = $folder;
@@ -24,4 +33,9 @@ function includeRouteFiles($folder)
             require $filename;
         }
     }
+}
+
+function warmGreeting()
+{
+    return 'Selamat datang ' . Auth::user()->name . '! Sudah minum obat skizo hari ini?';
 }
