@@ -13,7 +13,7 @@ class SinglePageController extends Controller
     /* -------------------------------------------------------------------------- */
     public function dashboard()
     {
-        $url = "https://api.myanimelist.net/v2/anime/season/" . date('Y') . "/" . getSeason();
+        $url = "https://api.myanimelist.net/v2/anime/season/" . date('Y') . "/" . getSeason() . "?limit=20";
 
         $client = new Client();
 
